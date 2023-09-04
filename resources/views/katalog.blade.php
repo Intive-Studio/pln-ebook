@@ -14,12 +14,12 @@
             width: 100%;
         }
     </style>
-    <title id="t">Katalog - Rumah Batik Probolinggo</title>
+    <title id="t">PLN NP’s Partnership Process</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/png">
+    <link rel="shortcut icon" href="{{ asset('favico.ico') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('e-catalog/css/wow_book.css') }} " type="text/css" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('e-catalog/css/ethics.css') }} ">
+    <link rel="stylesheet" type="text/css" href="{{ asset('e-catalog/css/main.css') }} ">
     <link rel="stylesheet" type="text/css" href="{{ asset('e-catalog/css/icon.css') }} ">
     <link rel="stylesheet" type="text/css" href="{{ asset('e-catalog/css/animate.css') }} ">
     <link rel="stylesheet" media="screen" type="text/css" href="{{ asset('e-catalog/css/style.css') }} ">
@@ -80,37 +80,24 @@
 </head>
 
 <body style="overflow: hidden">
-    {{-- <iframe style="width:100%;height:100%" src="https://online.fliphtml5.com/nxajr/xyfg/" seamless="seamless"
-        scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true"></iframe> --}}
     <div class="container-fluid" style="height: 100vh; width: 100vw;">
         <div id="book-container" style="height: 100%; display:flex;">
             <div id="main" style="margin: auto">
                 <div id="katalog" class="buku">
-                    <div id="p1">
-                    </div>
-                    <div id="p2">
-                        <video width="100%" height="100%">
-                            <source src="{{ asset('e-catalog/video/video.mp4') }}" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div id="p3">
-                    </div>
-                    <div id="p6">
-                        <audio src="{{ asset('e-catalog/video/audio.mp3') }}"></audio>
-                    </div>
-                    <div id="p7">
-                    </div>
-                    <div id="p98">
-                    </div>
+                    @for ($i = 1; $i <= 12; $i++)
+                        @php
+                            $background = asset('e-catalog/images/' . $i . '.jpg');
+                        @endphp
+                        <div id="p{{ $i + 1 }}" style="background-image: url('{{ $background }}');background-size: 100% 100%;">
+                        </div>
+                    @endfor
                 </div>
             </div>
         </div>
         <div id="navigation" class="container">
             <div class="row mg-bottom-10 mg-top-15">
                 <div class="col-md-12 text-center">
-                    <a target="_blank" href="{{ asset('e-catalog/katalog.pdf') }}" class="btn btn-primary">Download
-                        Katalog</a>
+                    <a target="_blank" href="{{ asset('e-catalog/pln-nps-partnership-process.pdf') }}" class="btn btn-primary">Download PDF</a>
                     <button class="btn btn-primary cov">
                         <i class="fa fa-angle-double-left"></i>
                     </button>
@@ -133,7 +120,7 @@
         <div id="navigation2" class="container">
             <div class="row mg-bottom-10 mg-top-15">
                 <div class="col-md-12 text-center">
-                    <a target="_blank" href="{{ asset('e-catalog/katalog.pdf') }}" class="btn btn-primary"><i class="fa fa-download"></i></a>
+                    <a target="_blank" href="{{ asset('e-catalog/pln-nps-partnership-process.pdf') }}" class="btn btn-primary"><i class="fa fa-download"></i></a>
                     <button class="btn btn-primary cov">
                         <i class="fa fa-angle-double-left"></i>
                     </button>
@@ -161,7 +148,7 @@
     <script type="text/javascript" src="{{ asset('e-catalog/js/jquery.hotkeys.js') }}"></script>
     <script type="text/javascript" src="{{ asset('e-catalog/js/hotkeys.js') }}"></script>
     <script type="text/javascript" src="{{ asset('e-catalog/js/clipboard.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('e-catalog/js/ethics.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('e-catalog/js/main.js') }}"></script>
     <script type="text/javascript" src="{{ asset('e-catalog/js/semantic.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('e-catalog/js/toastr.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('e-catalog/js/stats.js') }}"></script>
