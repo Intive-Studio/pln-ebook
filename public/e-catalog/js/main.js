@@ -298,3 +298,14 @@ function onShowPage(page, e) {
 }
 
 document.getElementById('backsound').volume = 0.3;
+
+$('.btn-audio').click(function () {
+    // toggle audio background
+    if ($('#backsound').get(0).paused) {
+        $('#backsound').get(0).play();
+        $(this).find('i').addClass('fa-volume-up').removeClass('fa-volume-off');
+    } else {
+        $('#backsound').get(0).pause();
+        $(this).find('i').addClass('fa-volume-off').removeClass('fa-volume-up');
+    }
+});

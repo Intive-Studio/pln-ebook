@@ -1,0 +1,1 @@
+<?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/pln-catalogue/resources/views/svg/6.blade.php ENDPATH**/ ?>
