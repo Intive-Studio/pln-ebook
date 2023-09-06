@@ -7,57 +7,6 @@
     overflow: hidden;
 }
 
-/* tempatnya background */
-.bg1 {
-    background: url("../images/bg1.jpg") no-repeat;
-    background-size: cover;
-    -webkit-transition-duration: 1s;
-    -moz-transition-duration: 1s;
-    -o-transition-duration: 1s;
-    -transition-duration: 1s;
-}
-
-.bg2 {
-    background: url("../images/bg2.jpg") no-repeat;
-    background-size: cover;
-    -webkit-transition-duration: 1s;
-    -moz-transition-duration: 1s;
-    -o-transition-duration: 1s;
-    -transition-duration: 1s;
-}
-
-.bg3 {
-    background: url("../images/bg3.jpg") no-repeat;
-    background-size: cover;
-    -webkit-transition-duration: 1s;
-    -moz-transition-duration: 1s;
-    -o-transition-duration: 1s;
-    -transition-duration: 1s;
-}
-
-.bg4 {
-    background-image: url("../images/bg4.jpg");
-    background-size: cover;
-    -webkit-transition-duration: 0.5s;
-    -moz-transition-duration: 0.5s;
-    -o-transition-duration: 0.5s;
-    -transition-duration: 0.5s;
-    margin: 0;
-}
-
-.bg5 {
-    background-image: url(../images/bg.jpg);
-    background-size: cover;
-    -webkit-transition-duration: 0.5s;
-    -moz-transition-duration: 0.5s;
-    -o-transition-duration: 0.5s;
-    -transition-duration: 0.5s;
-    margin: 0;
-}
-
-/* end tempatnya background */
-
-
 /* for majalah */
 #book-container {
     -webkit-box-sizing: border-box;
@@ -99,17 +48,6 @@ screen and (max-height: 380px) {
         text-size-adjust: none;
     }
 }
-
-/* 
-@media screen and (max-height: 500px) {
-    #navigation {
-        display: none;
-    }
-
-    #navigation-mobile {
-        display: unset;
-    }
-} */
 
 /* end for majalah */
 
@@ -706,7 +644,7 @@ screen and (max-height: 380px) {
     padding: 10px;
     position: absolute;
     right: 0px;
-    left: 195px;
+    left: 195px;navigation
     top: 34%;
     margin: auto;
     background-color: black;

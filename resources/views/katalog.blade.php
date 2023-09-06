@@ -24,9 +24,10 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('e-catalog/css/animate.css') }} ">
     <link rel="stylesheet" media="screen" type="text/css" href="{{ asset('e-catalog/css/style.css') }} ">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/styles.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('e-catalog/css/semantic.min.css') }} ">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ asset('e-catalog/css/font-awesome.min.css') }} ">
     <link rel="stylesheet" type="text/css" href="{{ asset('e-catalog/css/toastr.min.css') }} ">
+    <link rel="stylesheet" href="{{ asset('e-catalog/css/animation.css') }}">
 
     <style>
         #fbTopBar {
@@ -56,7 +57,7 @@
 
         #navigation2 {
             position: fixed;
-            bottom: 40vh;
+            bottom: 47vh;
             left: 45vw;
             z-index: 100;
             transform: rotate(90deg);
@@ -80,6 +81,10 @@
 </head>
 
 <body style="overflow: hidden">
+    <audio loop autoplay id="backsound">
+        <source src="{{ asset('e-catalog/video/backsound.mp3') }}">
+    </audio>
+
     <div class="container-fluid" style="height: 100vh; width: 100vw;">
         <div id="book-container" style="height: 100%; display:flex;">
             <div id="main" style="margin: auto">
@@ -88,30 +93,42 @@
                         @php
                             $background = asset('e-catalog/images/' . $i . '.jpg');
                         @endphp
-                        <div id="p{{ $i + 1 }}" style="background-image: url('{{ $background }}');background-size: 100% 100%;">
+                        <div id="p{{ $i + 1 }}" style="background-image: url('{{ $background }}');background-size: 100% 100%;" class="p-0">
+                            @include("svg.$i")
+                            @if ($i == 2)
+                                <div class="p-4 text-center">
+                                    <video width="95%" class="rounded" style="overflow:hidden;margin-top:25%">
+                                        <source src="{{ asset('e-catalog/video/video.mp4') }}" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                            @endif
                         </div>
                     @endfor
                 </div>
             </div>
         </div>
-        <div id="navigation" class="container">
-            <div class="row mg-bottom-10 mg-top-15">
+        <div id="navigation" class="container-fluid">
+            <div class="row mt-5 mb-3">
                 <div class="col-md-12 text-center">
-                    <a target="_blank" href="{{ asset('e-catalog/pln-nps-partnership-process.pdf') }}" class="btn btn-primary">Download PDF</a>
-                    <button class="btn btn-primary cov">
+                    <a target="_blank" href="{{ asset('e-catalog/pln-nps-partnership-process.pdf') }}" class="btn btn-lg btn-danger">Download PDF</a>
+                    <button class="btn btn-lg btn-danger cov">
                         <i class="fa fa-angle-double-left"></i>
                     </button>
-                    <button class="btn btn-primary prev">
+                    <button class="btn btn-lg btn-danger prev">
                         <i class="fa fa-angle-left"></i>
                     </button>
-                    <button class="btn btn-primary next">
+                    <button class="btn btn-lg btn-danger next">
                         <i class="fa fa-angle-right"></i>
                     </button>
-                    <button class="btn btn-primary btn-zoomin">
+                    <button class="btn btn-lg btn-danger btn-zoomin">
                         <i class="fa fa-plus-circle"></i>
                     </button>
-                    <button class="btn btn-primary btn-zoomout">
+                    <button class="btn btn-lg btn-danger btn-zoomout">
                         <i class="fa fa-minus-circle"></i>
+                    </button>
+                    <button class="btn btn-lg btn-danger btn-fullscreen">
+                        <i class="fa fa-expand"></i>
                     </button>
                 </div>
             </div>
@@ -120,21 +137,24 @@
         <div id="navigation2" class="container">
             <div class="row mg-bottom-10 mg-top-15">
                 <div class="col-md-12 text-center">
-                    <a target="_blank" href="{{ asset('e-catalog/pln-nps-partnership-process.pdf') }}" class="btn btn-primary"><i class="fa fa-download"></i></a>
-                    <button class="btn btn-primary cov">
+                    <a target="_blank" href="{{ asset('e-catalog/pln-nps-partnership-process.pdf') }}" class="btn btn-danger"><i class="fa fa-download"></i></a>
+                    <button class="btn btn-danger cov">
                         <i class="fa fa-angle-double-left"></i>
                     </button>
-                    <button class="btn btn-primary prev">
+                    <button class="btn btn-danger prev">
                         <i class="fa fa-angle-left"></i>
                     </button>
-                    <button class="btn btn-primary next">
+                    <button class="btn btn-danger next">
                         <i class="fa fa-angle-right"></i>
                     </button>
-                    <button class="btn btn-primary btn-zoomin">
+                    <button class="btn btn-danger btn-zoomin">
                         <i class="fa fa-plus-circle"></i>
                     </button>
-                    <button class="btn btn-primary btn-zoomout">
+                    <button class="btn btn-danger btn-zoomout">
                         <i class="fa fa-minus-circle"></i>
+                    </button>
+                    <button class="btn btn-danger btn-fullscreen">
+                        <i class="fa fa-expand"></i>
                     </button>
                 </div>
             </div>
