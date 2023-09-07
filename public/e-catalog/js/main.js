@@ -1,4 +1,4 @@
-let with_audio = localStorage.getItem('with_audio') == 'true' ? true : false;
+let with_audio = true;
 let currentlySpeaking = false;
 var voices = [];
 let current_pages = [];
@@ -63,6 +63,17 @@ $(document).ready(function () {
             },
             onShowPage: function (e, page) {
                 wowBookInit = e;
+                // pause audio and vide smoothly
+                $('#katalog').find('video').each(function () {
+                    $(this).get(0).pause();
+                    $(this).get(0).currentTime = 0;
+                });
+
+                $('#katalog').find('audio').each(function () {
+                    $(this).get(0).pause();
+                    $(this).get(0).currentTime = 0;
+                });
+
                 onShowPage(page, e);
 
             }
@@ -79,24 +90,6 @@ $(document).ready(function () {
         } else {
             $('.btn-audio').find('i').addClass('fa-volume-up').removeClass('fa-volume-off');
         }
-        $('.btn-audio').click(function () {
-            with_audio = !with_audio;
-            if (!with_audio) {
-                if ('speechSynthesis' in window) {
-                    speechSynthesis.cancel();
-                    $('.highlight').removeClass('highlight');
-                }
-            }
-
-            if (with_audio) {
-                onShowPage(wowBookInit.pages[wowBookInit.currentPage], wowBookInit);
-                $('.btn-audio').find('i').addClass('fa-volume-up').removeClass('fa-volume-off');
-            } else {
-                $('.btn-audio').find('i').addClass('fa-volume-off').removeClass('fa-volume-up');
-            }
-            localStorage.setItem('with_audio', with_audio);
-
-        });
     }, 1000);
 });
 
@@ -164,33 +157,35 @@ function speak(element) {
         // Cek apakah browser mendukung Web Speech API
         if ('speechSynthesis' in window) {
             const speech = new SpeechSynthesisUtterance(text);
-            speech.lang = 'id-ID';
-            // speech.rate = 0.95;
-            // speech.pitch = 1.1;
+            const desiredLanguage = 'en-US'; // Desired language (e.g., English, United States)
+
+            speech.rate = 0.95; // Speech rate (adjust as needed)
+            speech.pitch = 1.0; // Speech pitch (adjust as needed)
+            speech.volume = 1.0; // Speech volume (adjust as needed)
+
             // get all voices from object to json
+            voices = voices.filter(voice => voice.lang.includes(desiredLanguage));
+            var name_options = [
+                'Goggle US English',
+                'Samantha',
+                'Microsoft David Desktop - English (United States)',
+                'Alex',
+            ];
 
-            // Ambil semua suara dengan bahasa indonesia
-            const allIndonesianVoice = voices.filter(voice => voice.lang === 'id-ID');
+            // get all voices based on name options
+            var selectedVoice = voices.find(function (voice) {
+                return name_options.includes(voice.name);
+            });
 
-            speech.voice = allIndonesianVoice[1] ?? allIndonesianVoice[0];
+            // Set the selected voice (or the first available voice if not found)
+            speech.voice = selectedVoice || voices[0];
+
             currentlySpeaking = true;
-            let voice_name = speech.voice?.name;
-
-            // Atur peristiwa untuk menambahkan highlight pada teks yang sedang dinarasikan
-            speech.onstart = () => {
-                highlightText(0, 0, $(element), voice_name); // Mulai dengan highlight pada karakter perta,ma
-            };
-
-            speech.onboundary = (event) => {
-                resetHighlight($(element)); // Reset highlight sebelum menambahkan highlight baru
-                highlightText(event.charIndex, event.charIndex + event.charLength, $(element), voice_name);
-            };
-
             speech.onend = () => {
-                resetHighlight($(element)); // Reset highlight setelah ucapan selesai
                 currentlySpeaking = false;
+                playMedia();
             };
-            // Memulai sintesis ucapan
+
             speechSynthesis.speak(speech);
         } else {
             alert('Maaf, browser Anda tidak mendukung fitur Text-to-Speech.');
@@ -202,7 +197,6 @@ function speak(element) {
 }
 
 function playMedia() {
-    // revert current pages array
     let videos = [];
     let audios = [];
     current_pages.forEach((page) => {
@@ -213,16 +207,6 @@ function playMedia() {
         $(page).find('audio').each(function () {
             audios.push(this);
         });
-    });
-
-    $('#katalog').find('video').each(function () {
-        $(this).get(0).pause();
-        $(this).get(0).currentTime = 0;
-    });
-
-    $('#katalog').find('audio').each(function () {
-        $(this).get(0).pause();
-        $(this).get(0).currentTime = 0;
     });
 
     setTimeout(() => {
@@ -238,7 +222,7 @@ function playMedia() {
             // on video pause unmute background sound volume
             $(video).on('pause', function () {
                 $('#backsound').animate({
-                    volume: 0.3
+                    volume: 0.1
                 }, 1000);
             });
         });
@@ -246,7 +230,7 @@ function playMedia() {
         audios.forEach((audio) => {
             $(audio).get(0).play();
         });
-    }, 1000);
+    }, 2000);
 }
 
 function playVoiceOver() {
@@ -256,8 +240,6 @@ function playVoiceOver() {
             paragraphs.push(this);
         });
     });
-
-    console.log(paragraphs);
     paragraphs.forEach(function (element) {
         speak(element);
     });
@@ -273,7 +255,6 @@ function onShowPage(page, e) {
             $('.highlight').removeClass('highlight');
         }
 
-        playMedia();
         if (with_audio) {
             playVoiceOver();
         }
@@ -285,10 +266,7 @@ function onShowPage(page, e) {
 
             if ('speechSynthesis' in window) {
                 speechSynthesis.cancel();
-                $('.highlight').removeClass('highlight');
             }
-
-            playMedia();
 
             if (with_audio) {
                 playVoiceOver();
@@ -297,10 +275,9 @@ function onShowPage(page, e) {
     }
 }
 
-document.getElementById('backsound').volume = 0.3;
+document.getElementById('backsound').volume = 0.1;
 
 $('.btn-audio').click(function () {
-    // toggle audio background
     if ($('#backsound').get(0).paused) {
         $('#backsound').get(0).play();
         $(this).find('i').addClass('fa-volume-up').removeClass('fa-volume-off');

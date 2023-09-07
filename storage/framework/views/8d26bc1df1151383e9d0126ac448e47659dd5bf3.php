@@ -61,7 +61,7 @@
             top: 0;
             right: 10px;
             z-index: 100;
-            display: flex;
+            display: none;
             grid-gap: 5px;
             flex-direction: column;
             justify-content: center;
@@ -73,7 +73,7 @@
             }
 
             #navigation2 {
-                /* display: block; */
+                display: flex;
             }
         }
     </style>
@@ -89,15 +89,16 @@
         <div id="book-container" style="height: 100%; display:flex;">
             <div id="main" style="margin: auto">
                 <div id="katalog" class="buku">
-                    <?php for($i = 1; $i <= 12; $i++): ?>
+                    <?php for($i = 1; $i <= 16; $i++): ?>
                         <?php
                             $background = asset('e-catalog/images/' . $i . '.jpg');
                         ?>
                         <div id="p<?php echo e($i + 1); ?>" style="background-image: url('<?php echo e($background); ?>');background-size: 100% 100%;" class="p-0">
+                            <p style="visibility: hidden"><?php echo e($voice_overs[$i - 1] ?? ''); ?></p>
                             <?php echo $__env->make("svg.$i", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-                            <?php if($i == 2): ?>
+                            <?php if($i == 4): ?>
                                 <div class="p-4 text-center">
-                                    <video width="95%" class="rounded" style="overflow:hidden;margin-top:25%">
+                                    <video width="95%" class="rounded" style="overflow:hidden;margin-top:22%" playsinline>
                                         <source src="<?php echo e(asset('storage/video/video.mp4')); ?>" type="video/mp4">
                                         Your browser does not support the video tag.
                                     </video>
@@ -130,6 +131,9 @@
                     <button class="btn btn-lg btn-danger btn-fullscreen">
                         <i class="fa fa-expand"></i>
                     </button>
+                    <button class="btn btn-lg btn-danger btn-audio">
+                        <i class="fa fa-volume-up"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -137,25 +141,25 @@
 
             <div id="navigation2">
                 <a target="_blank" href="<?php echo e(asset('e-catalog/pln-nps-partnership-process.pdf')); ?>" class="btn btn-danger"><i class="fa fa-download"></i></a>
-                <button class="btn btn-danger cov">
+                <button class="btn btn-lg btn-danger cov">
                     <i class="fa fa-angle-double-left"></i>
                 </button>
-                <button class="btn btn-danger prev">
+                <button class="btn btn-lg btn-danger prev">
                     <i class="fa fa-angle-left"></i>
                 </button>
-                <button class="btn btn-danger next">
+                <button class="btn btn-lg btn-danger next">
                     <i class="fa fa-angle-right"></i>
                 </button>
-                <button class="btn btn-danger btn-zoomin">
+                <button class="btn btn-lg btn-danger btn-zoomin">
                     <i class="fa fa-plus-circle"></i>
                 </button>
-                <button class="btn btn-danger btn-zoomout">
+                <button class="btn btn-lg btn-danger btn-zoomout">
                     <i class="fa fa-minus-circle"></i>
                 </button>
-                <button class="btn btn-danger btn-fullscreen">
+                <button class="btn btn-lg btn-danger btn-fullscreen">
                     <i class="fa fa-expand"></i>
                 </button>
-                <button class="btn btn-danger btn-audio">
+                <button class="btn btn-lg btn-danger btn-audio">
                     <i class="fa fa-volume-up"></i>
                 </button>
             </div>
@@ -168,7 +172,7 @@
     <script type="text/javascript" src="<?php echo e(asset('e-catalog/js/jquery.hotkeys.js')); ?>"></script>
     <script type="text/javascript" src="<?php echo e(asset('e-catalog/js/hotkeys.js')); ?>"></script>
     <script type="text/javascript" src="<?php echo e(asset('e-catalog/js/clipboard.min.js')); ?>"></script>
-    <script type="text/javascript" src="<?php echo e(asset('e-catalog/js/main.js')); ?>?v=1"></script>
+    <script type="text/javascript" src="<?php echo e(asset('e-catalog/js/main.js')); ?>?v=2"></script>
     <script type="text/javascript" src="<?php echo e(asset('e-catalog/js/semantic.min.js')); ?>"></script>
     <script type="text/javascript" src="<?php echo e(asset('e-catalog/js/toastr.min.js')); ?>"></script>
     <script type="text/javascript" src="<?php echo e(asset('e-catalog/js/stats.js')); ?>"></script>
