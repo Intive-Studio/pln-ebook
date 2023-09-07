@@ -172,7 +172,7 @@
     <script type="text/javascript" src="{{ asset('e-catalog/js/jquery.hotkeys.js') }}"></script>
     <script type="text/javascript" src="{{ asset('e-catalog/js/hotkeys.js') }}"></script>
     <script type="text/javascript" src="{{ asset('e-catalog/js/clipboard.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('e-catalog/js/main.js') }}?v=2"></script>
+    <script type="text/javascript" src="{{ asset('e-catalog/js/main.js') }}?v=3"></script>
     <script type="text/javascript" src="{{ asset('e-catalog/js/semantic.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('e-catalog/js/toastr.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('e-catalog/js/stats.js') }}"></script>

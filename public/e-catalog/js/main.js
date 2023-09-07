@@ -286,3 +286,13 @@ $('.btn-audio').click(function () {
         $(this).find('i').addClass('fa-volume-off').removeClass('fa-volume-up');
     }
 });
+
+document.addEventListener('click', function (event) {
+    const isiOS = navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+    if (isiOS) {
+        if ('speechSynthesis' in window) {
+            const lecture = new SpeechSynthesisUtterance('');
+            speechSynthesis.speak(lecture);
+        }
+    }
+});
