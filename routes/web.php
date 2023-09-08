@@ -33,5 +33,6 @@ Route::get('/', function () {
         '',
     ];
 
+    // return view('index');
     return view('katalog', compact('voice_overs'));
 });

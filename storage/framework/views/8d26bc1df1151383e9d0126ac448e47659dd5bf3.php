@@ -91,10 +91,10 @@
                 <div id="katalog" class="buku">
                     <?php for($i = 1; $i <= 16; $i++): ?>
                         <?php
-                            $background = asset('e-catalog/images/' . $i . '.jpg');
+                            $background = asset('e-catalog/images/content/' . $i . '.jpg?v=1');
                         ?>
                         <div id="p<?php echo e($i + 1); ?>" style="background-image: url('<?php echo e($background); ?>');background-size: 100% 100%;" class="p-0">
-                            <p style="visibility: hidden"><?php echo e($voice_overs[$i - 1] ?? ''); ?></p>
+                            <p style="visibility: hidden;font-size:0px;margin: 0px"><?php echo e($voice_overs[$i - 1] ?? ''); ?></p>
                             <?php echo $__env->make("svg.$i", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                             <?php if($i == 4): ?>
                                 <div class="p-4 text-center">
@@ -172,7 +172,7 @@
     <script type="text/javascript" src="<?php echo e(asset('e-catalog/js/jquery.hotkeys.js')); ?>"></script>
     <script type="text/javascript" src="<?php echo e(asset('e-catalog/js/hotkeys.js')); ?>"></script>
     <script type="text/javascript" src="<?php echo e(asset('e-catalog/js/clipboard.min.js')); ?>"></script>
-    <script type="text/javascript" src="<?php echo e(asset('e-catalog/js/main.js')); ?>?v=2"></script>
+    <script type="text/javascript" src="<?php echo e(asset('e-catalog/js/main.js')); ?>?v=3"></script>
     <script type="text/javascript" src="<?php echo e(asset('e-catalog/js/semantic.min.js')); ?>"></script>
     <script type="text/javascript" src="<?php echo e(asset('e-catalog/js/toastr.min.js')); ?>"></script>
     <script type="text/javascript" src="<?php echo e(asset('e-catalog/js/stats.js')); ?>"></script>

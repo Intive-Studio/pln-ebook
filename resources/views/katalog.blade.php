@@ -91,10 +91,10 @@
                 <div id="katalog" class="buku">
                     @for ($i = 1; $i <= 16; $i++)
                         @php
-                            $background = asset('e-catalog/images/' . $i . '.jpg');
+                            $background = asset('e-catalog/images/content/' . $i . '.jpg?v=1');
                         @endphp
                         <div id="p{{ $i + 1 }}" style="background-image: url('{{ $background }}');background-size: 100% 100%;" class="p-0">
-                            <p style="visibility: hidden">{{ $voice_overs[$i - 1] ?? '' }}</p>
+                            <p style="visibility: hidden;font-size:0px;margin: 0px">{{ $voice_overs[$i - 1] ?? '' }}</p>
                             @include("svg.$i")
                             @if ($i == 4)
                                 <div class="p-4 text-center">
