@@ -2,7 +2,9 @@
 .rotate {
 	-webkit-animation: rotate-center 1s linear infinite both;
 	        animation: rotate-center 1s linear infinite both;
+  -webkit-transform-origin: center center;
           transform-origin: center center;
+  -webkit-transform-box: fill-box;
           transform-box: fill-box;
 }
 

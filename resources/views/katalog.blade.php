@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ asset('e-catalog/css/font-awesome.min.css') }} ">
     <link rel="stylesheet" type="text/css" href="{{ asset('e-catalog/css/toastr.min.css') }} ">
-    <link rel="stylesheet" href="{{ asset('e-catalog/css/animation.css') }}">
+    <link rel="stylesheet" href="{{ asset('e-catalog/css/animation.css') }}?v=2">
 
     <style>
         #fbTopBar {
@@ -172,7 +172,7 @@
     <script type="text/javascript" src="{{ asset('e-catalog/js/jquery.hotkeys.js') }}"></script>
     <script type="text/javascript" src="{{ asset('e-catalog/js/hotkeys.js') }}"></script>
     <script type="text/javascript" src="{{ asset('e-catalog/js/clipboard.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('e-catalog/js/main.js') }}?v=3"></script>
+    <script type="text/javascript" src="{{ asset('e-catalog/js/main.js') }}?v={{ time() }}"></script>
     <script type="text/javascript" src="{{ asset('e-catalog/js/semantic.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('e-catalog/js/toastr.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('e-catalog/js/stats.js') }}"></script>

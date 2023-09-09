@@ -55,7 +55,7 @@ $(document).ready(function () {
                 flipSound: '.flipsound',
                 fullscreen: '.btn-fullscreen'
             },
-            scaleToFit: "#book-container",
+            // scaleToFit: "#book-container",
             onFullscreenError: function () {
                 var msg = "Fullscreen failed.";
                 if (self != top) msg = "The frame is blocking full screen mode. Click on 'remove frame' button above and try to go full screen again."
