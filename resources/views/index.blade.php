@@ -11,7 +11,7 @@
 
 <body style="background-color: #000">
     <div style="width:100px;heght:100px">
-<svg width="100%" height="100%" viewBox="0 0 1281 1441" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="100%" height="100%" class="position-relative" style="z-index:2" viewBox="0 0 1281 1441" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="12" clip-path="url(#clip0_535_2714)">
 <g id="Group">
 <g id="Layer 1">

@@ -24,7 +24,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/styles.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ asset('e-catalog/css/font-awesome.min.css') }} ">
-    <link rel="stylesheet" href="{{ asset('e-catalog/css/animation.css') }}?v=2">
+    <link rel="stylesheet" href="{{ asset('e-catalog/css/animation.css') }}?v=3">
 
     <style>
         #fbTopBar {
@@ -74,11 +74,27 @@
             }
         }
     </style>
+
+    @if (!$isIphone && !$isSafari)
+        <style>
+            .rotate {
+                -webkit-animation: rotate-center 1s linear infinite both;
+                animation: rotate-center 1s linear infinite both;
+                -webkit-transform-origin: center center;
+                transform-origin: center center;
+                -webkit-transform-box: fill-box;
+                transform-box: fill-box;
+            }
+        </style>
+    @endif
 </head>
 
 <body style="overflow: hidden">
+    <div class="loading-container">
+        <div class="loading-spinner"></div>
+    </div>
     <audio loop autoplay id="backsound">
-        <source src="{{ asset('storage/video/backsound.mp3') }}">
+        <source src="https://pln.intivestudio.com/storage/video/backsound.mp3">
     </audio>
 
     <div class="container-fluid" style="height: 100vh; width: 100vw;">
@@ -89,13 +105,14 @@
                         @php
                             $background = asset('e-catalog/images/content/' . $i . '.jpg?v=2');
                         @endphp
-                        <div id="p{{ $i + 1 }}" style="background-image: url('{{ $background }}');background-size: 100% 100%;" class="p-0">
+                        <div id="p{{ $i + 1 }}" class="p-0">
                             <p style="visibility: hidden;font-size:0px;margin: 0px">{{ $voice_overs[$i - 1] ?? '' }}</p>
                             @include("svg.$i")
+                            <img src="{{ $background }}" alt="" srcset="" class="w-100 h-100 position-absolute" style="left: 0; top:0;z-index:1">
                             @if ($i == 4)
                                 <div class="p-4 text-center">
-                                    <video width="95%" class="rounded" style="overflow:hidden;margin-top:25%" playsinline preload="none">
-                                        <source src="{{ asset('storage/video/video.mp4') }}" type="video/mp4">
+                                    <video width="95%" class="rounded position-relative" style="overflow:hidden;margin-top:25%;z-index:3" playsinline preload="none" controls>
+                                        <source src="https://pln.intivestudio.com/storage/video/video.mp4" type="video/mp4">
                                         Your browser does not support the video tag.
                                     </video>
                                 </div>

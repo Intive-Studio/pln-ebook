@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Jenssegers\Agent\Agent;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,12 @@ Route::get('/', function () {
         '',
     ];
 
+    $agent = new Agent();
+    $agent->setUserAgent($_SERVER['HTTP_USER_AGENT']);
+
+    $isIphone = strtolower($agent->device()) == 'iphone' || strtolower($agent->device()) == 'ipad';
+    $isSafari = strtolower($agent->browser()) == 'safari';
+
     // return view('index');
-    return view('katalog', compact('voice_overs'));
+    return view('katalog', compact('voice_overs', 'isIphone', 'isSafari'));
 });

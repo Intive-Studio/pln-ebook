@@ -1,4 +1,4 @@
-<svg width="100%" height="100%" viewBox="0 0 1281 1441" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="100%" height="100%" class="position-relative" style="z-index:2" viewBox="0 0 1281 1441" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <g id="8" clip-path="url(#clip0_531_7031)">
         <path id="Vector" d="M1683.39 1369.24C1683.39 1369.24 1589.39 1124.42 1280 1124.42V1369.24H1683.39Z" fill="url(#paint0_linear_531_7031)" />
         <path id="Vector_2" d="M1565.55 1369.24C1565.55 1369.24 1452.88 1203.53 1280 1203.53V1369.24H1565.55Z" fill="url(#paint1_linear_531_7031)" />

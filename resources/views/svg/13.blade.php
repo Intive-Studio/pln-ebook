@@ -1,4 +1,4 @@
-<svg width="100%" height="100%" viewBox="0 0 1280 1441" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="100%" height="100%" class="position-relative" style="z-index:2" viewBox="0 0 1280 1441" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g id="13" clip-path="url(#clip0_531_4095)">
         <g id="Clip path group">
             <mask id="mask0_531_4095" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="-595" y="0" width="1875" height="608">

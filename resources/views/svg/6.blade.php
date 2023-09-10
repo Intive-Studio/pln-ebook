@@ -1,4 +1,4 @@
-<svg width="100%" height="100%" viewBox="0 0 1281 1441" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="100%" height="100%" class="position-relative" style="z-index:2" viewBox="0 0 1281 1441" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g id="6" clip-path="url(#clip0_531_7169)">
         <g id="Group">
             <g id="Layer 1">

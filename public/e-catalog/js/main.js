@@ -23,6 +23,9 @@ $(document).ready(function () {
         $(this).hide();
     });
 
+    setTimeout(function () {
+        document.querySelector('.loading-container').style.display = 'none';
+    }, 2000);
 
     voices = speechSynthesis.getVoices();
     setTimeout(() => {
